@@ -13,8 +13,14 @@ services:
     volumes:
       - .:/var/www/ecsdebu.devel
     working_dir: /var/www/ecsdebu.devel
+  postgres:
+    image: 1maa/postgres:10-alpine
+    volumes:
+      - pg_data:/var/lib/postgresql/data
   test_runner:
     image: 1maa/php-dev:7.2
     volumes:
       - .:/var/www/ecsdebu.devel
     working_dir: /var/www/ecsdebu.devel
+volumes:
+  pg_data: ~

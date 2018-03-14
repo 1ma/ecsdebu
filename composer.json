@@ -2,8 +2,11 @@
     "name": "uma/ecsdebu",
     "license": "proprietary",
     "type": "project",
+    "require": {
+        "php": ">=7.2"
+    },
     "require-dev": {
-        "php": ">=7.1",
+        "ext-pdo_pgsql": "*",
         "phpunit/phpunit": "^7.0"
     },
     "autoload-dev": {
