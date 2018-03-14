@@ -12,17 +12,21 @@ class PostgresTest extends TestCase
     {
         $pdo = new \PDO('pgsql:host=postgres;port=5432;dbname=postgres;user=postgres');
 
-        $pdo->exec('DROP TABLE IF EXISTS foo');
-        $pdo->exec('CREATE TABLE foo (id INT)');
-        $pdo->exec('INSERT INTO foo (id) VALUES (1),(2),(3)');
+        self::assertSame(0, $pdo->exec('DROP TABLE IF EXISTS foo'));
+        self::assertSame(0, $pdo->exec('CREATE TABLE foo (id INT)'));
+        self::assertSame(3, $pdo->exec('INSERT INTO foo (id) VALUES (1),(2),(3)'));
 
-        $result = $pdo->query('SELECT * FROM foo')
-            ->fetchAll(\PDO::FETCH_ASSOC);
+        $result = $pdo->query('SELECT * FROM foo');
 
-        self::assertSame([
-            ['id' => 1],
-            ['id' => 2],
-            ['id' => 3]
-        ], $result);
+        self::assertInstanceOf(\PDOStatement::class, $result);
+
+        self::assertSame(
+            [
+                ['id' => 1],
+                ['id' => 2],
+                ['id' => 3]
+            ],
+            $result->fetchAll(\PDO::FETCH_ASSOC)
+        );
     }
 }
