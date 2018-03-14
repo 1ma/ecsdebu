@@ -6,9 +6,9 @@ namespace Tests;
 
 use PHPUnit\Framework\TestCase;
 
-class NetworkTest extends TestCase
+class PostgresTest extends TestCase
 {
-    public function testInterContainerNetworking()
+    public function testInterContainerNetworking(): void
     {
         $pdo = new \PDO('pgsql:host=postgres;port=5432;dbname=postgres;user=postgres');
 
