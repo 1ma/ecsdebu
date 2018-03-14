@@ -1,6 +1,6 @@
 {
     "name": "uma/ecsdebu",
-    "license": "proprietary",
+    "license": "MIT",
     "type": "project",
     "require": {
         "php": ">=7.2"
