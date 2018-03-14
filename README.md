@@ -1,2 +1,2 @@
 - [x] Debug amb talèfanut
-- [ ] Debug test suite amb play
+- [x] Debug test suite amb play
