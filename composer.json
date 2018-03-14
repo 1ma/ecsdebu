@@ -6,8 +6,7 @@
         "php": ">=7.2"
     },
     "require-dev": {
-        "ext-pdo_pgsql": "*",
-        "phpunit/phpunit": "^7.0"
+        "ext-pdo_pgsql": "*"
     },
     "autoload-dev": {
         "psr-4": {
@@ -15,6 +14,6 @@
         }
     },
     "scripts": {
-        "test": "docker-compose exec -T fpm sh -c 'php vendor/bin/phpunit'"
+        "test": "docker-compose exec -T fpm sh -c 'phpunit.phar'"
     }
 }
