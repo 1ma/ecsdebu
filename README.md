@@ -1,0 +1,2 @@
+- [x] Debug amb talèfanut
+- [ ] Debug test suite amb play
