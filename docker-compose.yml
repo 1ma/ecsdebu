@@ -1,5 +1,9 @@
 version: "3"
 services:
+  postgres:
+    image: 1maa/postgres:10-alpine
+    ports:
+      - "127.0.0.1:5432:5432"
   nginx:
     image: nginx:1.13-alpine
     depends_on:
@@ -13,12 +17,8 @@ services:
     volumes:
       - .:/var/www/ecsdebu.devel
     working_dir: /var/www/ecsdebu.devel
-  test_runner:
+  phpstorm_test_runner:
     image: 1maa/php-dev:7.2
     volumes:
       - .:/var/www/ecsdebu.devel
     working_dir: /var/www/ecsdebu.devel
-  postgres:
-    image: 1maa/postgres:10-alpine
-    ports:
-      - "127.0.0.1:5432:5432"

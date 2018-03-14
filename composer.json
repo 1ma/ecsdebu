@@ -13,5 +13,8 @@
         "psr-4": {
             "Tests\\": "tests/"
         }
+    },
+    "scripts": {
+        "test": "docker-compose exec -T fpm sh -c 'php vendor/bin/phpunit'"
     }
 }
