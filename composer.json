@@ -14,6 +14,15 @@
         }
     },
     "scripts": {
+        "setup": [
+            "wget -nc -O phpunit.phar https://phar.phpunit.de/phpunit-7.0.phar || true",
+            "@composer install --ignore-platform-reqs",
+            "docker-compose up -d"
+        ],
         "test": "docker-compose exec -T fpm sh -c 'phpunit.phar'"
+    },
+    "scripts-descriptions": {
+        "setup": "Downloads the PHPUnit phar file, fires up the stack and installs the project dependencies",
+        "test": "Launches the test suite from inside the 'fpm' container"
     }
 }
