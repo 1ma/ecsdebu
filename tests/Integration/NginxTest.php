@@ -30,7 +30,7 @@ class NginxTest extends TestCase
      */
     public function testFastCGIRequest(): void
     {
-        $response = $this->http->get('http://ecsdebu.devel/phpinfo');
+        $response = $this->http->get('http://project.devel/phpinfo');
 
         self::assertSame(200, $response->getStatusCode());
         self::assertFalse($response->hasHeader('ETag'));
@@ -44,7 +44,7 @@ class NginxTest extends TestCase
      */
     public function testStaticFileRequest(): void
     {
-        $response = $this->http->get('http://ecsdebu.devel/favicon.png');
+        $response = $this->http->get('http://project.devel/favicon.png');
 
         self::assertSame(200, $response->getStatusCode());
         self::assertTrue($response->hasHeader('ETag'));
@@ -57,7 +57,7 @@ class NginxTest extends TestCase
      */
     public function testFrontControllerFileIsInvisible(): void
     {
-        $response = $this->http->get('http://ecsdebu.devel/index.php');
+        $response = $this->http->get('http://project.devel/index.php');
 
         self::assertSame(404, $response->getStatusCode());
     }

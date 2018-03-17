@@ -1,5 +1,6 @@
 {
-    "name": "uma/ecsdebu",
+    "name": "uma/php-project-development",
+    "description": "Documenting PHP project development with a Docker environment",
     "license": "MIT",
     "type": "project",
     "require": {
