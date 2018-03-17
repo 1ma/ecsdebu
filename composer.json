@@ -3,14 +3,22 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": ">=7.2"
+        "php": ">=7.2",
+        "roave/security-advisories": "dev-master",
+        "slim/slim": "^3.9"
     },
     "require-dev": {
-        "ext-pdo_pgsql": "*"
+        "ext-pdo_pgsql": "*",
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Project\\Code\\": "src/"
+        }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "Project\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -19,10 +27,17 @@
             "@composer install --ignore-platform-reqs",
             "docker-compose up -d"
         ],
-        "test": "docker-compose exec -T fpm sh -c 'phpunit.phar'"
+        "reload": [
+            "@composer wipe",
+            "@composer setup"
+        ],
+        "test": "docker-compose exec -T fpm sh -c 'phpunit.phar'",
+        "wipe": "docker-compose down -v"
     },
     "scripts-descriptions": {
         "setup": "Downloads the PHPUnit phar file, fires up the stack and installs the project dependencies",
-        "test": "Launches the test suite from inside the 'fpm' container"
+        "reload": "Shortcut to call 'composer wipe' and 'composer setup' in sequence",
+        "test": "Launches the test suite from inside the 'fpm' container",
+        "wipe": "Deletes the development containers, along with their network(s) and data volume(s)"
     }
 }
