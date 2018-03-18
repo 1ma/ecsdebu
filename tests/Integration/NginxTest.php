@@ -19,7 +19,7 @@ class NginxTest extends TestCase
     {
         $this->http = new Client([
             RequestOptions::HTTP_ERRORS => false,
-            RequestOptions::DEBUG => true
+            RequestOptions::DEBUG => (bool) $_ENV['HTTP_DEBUG']
         ]);
     }
 
@@ -28,7 +28,7 @@ class NginxTest extends TestCase
      * will have an X-Powered-By header with the PHP version, and Nginx will
      * not put an ETag on it.
      */
-    public function testFastCGIRequest(): void
+    public function testDynamicRequestIsForwardedToFpm(): void
     {
         $response = $this->http->get('http://project.devel/phpinfo');
 
@@ -42,7 +42,7 @@ class NginxTest extends TestCase
      * header with its hash, but not an X-Powered-By header since the FPM
      * container was not involved at all.
      */
-    public function testStaticFileRequest(): void
+    public function testStaticFileRequestIsHandledByNginx(): void
     {
         $response = $this->http->get('http://project.devel/favicon.png');
 

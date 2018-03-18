@@ -32,7 +32,7 @@
             "@composer wipe",
             "@composer setup"
         ],
-        "test": "docker-compose exec -T fpm sh -c 'phpunit.phar'",
+        "test": "docker-compose exec -T fpm sh -c 'php -dzend.assertions=1 -dassert.exception=1 phpunit.phar --testdox'",
         "wipe": "docker-compose down -v"
     },
     "scripts-descriptions": {

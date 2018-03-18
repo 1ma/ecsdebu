@@ -17,5 +17,6 @@
         <env name="DB_PORT" value="5432"/>
         <env name="DB_NAME" value="project"/>
         <env name="DB_USER" value="postgres"/>
+        <env name="HTTP_DEBUG" value="1"/>
     </php>
 </phpunit>
